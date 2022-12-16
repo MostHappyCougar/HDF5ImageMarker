@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+	<conf>
+		<img_w>1920</img_w>
+		<img_h>1080</img_h>
+		<window_size_w>16</window_size_w>
+		<window_size_h>8</window_size_h>
+		<source_folder>source</source_folder>
+		<output_folder>output</output_folder>
+	</conf>
+	
+	<logs>
+		<log_folder>logs</log_folder>
+		<import_logs>0</import_logs>
+	</logs>
+</root>
