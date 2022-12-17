@@ -4,24 +4,24 @@
     <index>0</index>
     <img_shape>(3, 1080, 1920)</img_shape>
     <img_mean>0.07085328</img_mean>
-    <img_import_timestamp>00:22:47.072529</img_import_timestamp>
+    <img_import_timestamp>00:33:46.356910</img_import_timestamp>
   </row>
   <row>
     <index>1</index>
     <img_shape>(3, 1080, 1920)</img_shape>
     <img_mean>0.0989829</img_mean>
-    <img_import_timestamp>00:22:51.233405</img_import_timestamp>
+    <img_import_timestamp>00:33:54.399545</img_import_timestamp>
   </row>
   <row>
     <index>2</index>
     <img_shape>(3, 1080, 1920)</img_shape>
     <img_mean>0.36110222</img_mean>
-    <img_import_timestamp>00:22:54.022564</img_import_timestamp>
+    <img_import_timestamp>00:33:55.689492</img_import_timestamp>
   </row>
   <row>
     <index>3</index>
     <img_shape>(3, 1080, 1920)</img_shape>
     <img_mean>0.16756904</img_mean>
-    <img_import_timestamp>00:22:55.695347</img_import_timestamp>
+    <img_import_timestamp>00:33:56.693606</img_import_timestamp>
   </row>
 </data>
