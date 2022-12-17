@@ -1,9 +1,0 @@
-<?xml version='1.0' encoding='utf-8'?>
-<data>
-  <row>
-    <index>0</index>
-    <img_shape>(3, 256, 256)</img_shape>
-    <img_mean>0.22554873</img_mean>
-    <img_import_timestamp>23:59:29.543299</img_import_timestamp>
-  </row>
-</data>

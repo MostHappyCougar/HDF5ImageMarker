@@ -8,7 +8,7 @@ import config_parser
 __log_import_raw=[]
 
 def write_import_logs():
-    if bool(config_parser.import_logs) == 1:
+    if bool(int(config_parser.import_logs)) == 1:
         from datetime import datetime
         current_date = datetime.now().date()
         current_time = datetime.now().time()   
