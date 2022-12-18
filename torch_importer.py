@@ -4,6 +4,7 @@ import pandas as pd
 from obj_marking import marking
 import os
 import config_parser
+import sys
 
 dirname = os.path.dirname(__file__)
 log_path = os.path.join(dirname, config_parser.log_folder)
@@ -29,6 +30,7 @@ try:
 except FileNotFoundError:
     print(f"Directory \"{source_path}\" doesn't exist or no content stored there!!!")
     print("In the INPUT directory should be contained at least one sub directory with at least one .jpg, .png or eather graphic format files")
+    sys.exit()
 
 for data, label in loaders['import']:
     write_import_logs()
