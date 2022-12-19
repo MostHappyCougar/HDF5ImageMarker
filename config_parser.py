@@ -1,6 +1,10 @@
 import xml.etree.ElementTree as ET
+from os import path
 
-conf = ET.parse("config.xml")
+dirname = path.dirname(__file__)
+conf_path = path.join(dirname, "config.xml")
+
+conf = ET.parse(conf_path)
 root = conf.getroot()
 
 for tags_conf in root.findall("conf"):
