@@ -12,14 +12,14 @@ for tags_conf in root.findall("conf"):
     try:
         width = int(tags_conf.find("img_w").text) if int(tags_conf.find("img_w").text) > 0 else iss_handler("Config Error", "img_w must be greater than zero!", "conf_err01")
     except ValueError:
-        iss_handler("Config Error", "img_w must be an integer or float!", "conf_err011")
+        iss_handler("Config Error", "img_w must be an integer!", "conf_err011")
     except TypeError:
         iss_handler("Config Error", "img_w must be filled!", "conf_err012")
     
     try:
         height = int(tags_conf.find("img_h").text) if int(tags_conf.find("img_h").text) > 0 else iss_handler("Config Error", "img_h must be greater than zero!", "conf_err01")
     except ValueError:
-        iss_handler("Config Error", "img_h must be an integer or float!", "conf_err011")
+        iss_handler("Config Error", "img_h must be an integer!", "conf_err011")
     except TypeError:
         iss_handler("Config Error", "img_h must be filled!", "conf_err012")
     
