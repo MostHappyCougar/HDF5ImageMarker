@@ -13,7 +13,7 @@ img_transforms = transforms.Compose([transforms.Resize((height, width)),transfor
 try:
     importer = DataLoader(datasets.ImageFolder(source_path, transform=img_transforms),  batch_size=1, shuffle = False) 
 except FileNotFoundError:
-    iss_handler("Import Error", f'No subdirectory in "{source_folder}" or no content stored in existing subdirectory! \nCheck if the source folder have this architecture: {source_folder}\<any_subdirectory_name>\<content>', 1)
+    iss_handler("Import Error", f'No subdirectory in "{source_folder}" or no content stored in existing subdirectory! \nCheck if the source folder have this architecture: {source_folder}\<any_subdirectory_name>\<content>', "imp_err01")
 
 for data, label in importer:
     marking(data[0,:,:,:])
