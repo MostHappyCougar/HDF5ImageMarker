@@ -14,17 +14,16 @@ for tags_conf in root.findall("conf"):
     window_size_w = int(tags_conf.find("window_size_w").text) if int(tags_conf.find("window_size_w").text) > 0 else iss_handler("Config Error", "window_size_w must be greater than zero!", 1)
     window_size_h = int(tags_conf.find("window_size_h").text) if int(tags_conf.find("window_size_h").text) > 0 else iss_handler("Config Error", "window_size_h must be greater than zero!", 1)
     
-    if path.exists(tags_conf.find("source_folder").text) == True:
+    src_folder_path = path.join(dirname, tags_conf.find("source_folder").text) #Source Folder abs path
+    out_folder_path = path.join(dirname, tags_conf.find("output_folder").text) #Output Folder abs path
+    
+    if path.exists(src_folder_path) == True:
         source_folder = tags_conf.find("source_folder").text
     elif tags_conf.find("source_folder").text.startswith(" "): iss_handler("Config Error", "Path to source_folder must not begins with space", 1)
-    elif path.exists(tags_conf.find("source_folder").text) == False: iss_handler("Config Error", "source_folder "+"'"+tags_conf.find("source_folder").text+"'" + " not found!", 1) 
+    elif path.exists(src_folder_path) == False: iss_handler("Config Error", "source_folder "+"'"+tags_conf.find("source_folder").text+"'" + " not found!", 1) 
     
-    if path.exists(tags_conf.find("output_folder").text) == True:
+    if path.exists(out_folder_path) == True:
         output_folder = tags_conf.find("output_folder").text
     elif tags_conf.find("output_folder").text.startswith(" "): iss_handler("Config Error", "Path to source_folder must not begins with space")
-    elif path.exists(tags_conf.find("output_folder").text) == False: iss_handler("Config Error", "output_folder "+"'"+tags_conf.find("output_folder").text+"'" + " not found!", 1) 
-    
-for tags_logs in root.findall("logs"):
-    log_folder = tags_logs.find("log_folder").text
-    import_logs = tags_logs.find("import_logs").text
+    elif path.exists(out_folder_path) == False: iss_handler("Config Error", "output_folder "+"'"+tags_conf.find("output_folder").text+"'" + " not found!", 1) 
     
