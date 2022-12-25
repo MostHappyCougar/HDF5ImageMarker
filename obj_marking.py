@@ -10,7 +10,6 @@ def marking(data):
     imp_img=data.permute(1,2,0)
     
     def on_click_event(event):
-        print(event.xdata, event.ydata)
         hdf5_exporter.expore_image(config_parser.out_folder_path, imp_img, round(event.xdata, 0), round(event.ydata, 0))
     
     fig.canvas.mpl_connect('button_press_event', on_click_event)
