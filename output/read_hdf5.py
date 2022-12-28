@@ -1,6 +1,10 @@
 import h5py
+from config_parser import filename
 
-hdf=h5py.File('out.h5', 'r')
-print("Image Array: \n", hdf['/Train/Images'][2])
-print("Coordinates: \n", hdf['/Train/Coords'][2])
-hdf.close()
+
+with h5py.File(filename, 'r') as hdf:
+    print("Image Array Shapes: \n", hdf['/Test/Images'])
+    print("Coordinates Shapes: \n", hdf['/Test/Marks'])
+    
+    print("Image Array: \n", hdf['/Test/Images'][:])
+    print("Coordinates: \n", hdf['/Test/Marks'][:])

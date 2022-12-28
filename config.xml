@@ -7,6 +7,12 @@
 		<window_size_h>8</window_size_h>
 		<source_folder>source</source_folder>
 		<output_folder>output</output_folder>
+		<marks_counts>5</marks_counts>
+		<output_file>
+			<file_name>test_suite</file_name>
+			<dataset_name>Test</dataset_name>
+			<write_mode>a</write_mode>
+		</output_file>
 	</conf>
 	
 	<logs>

@@ -29,6 +29,8 @@ for tags_conf in root.findall("conf"):
     src_folder_path = path.join(dirname, tags_conf.find("source_folder").text) #Source Folder abs path
     out_folder_path = path.join(dirname, tags_conf.find("output_folder").text) #Output Folder abs path
     
+    marks_counts=int(tags_conf.find("marks_counts").text)
+    
     if path.exists(src_folder_path) == True:
         source_folder = tags_conf.find("source_folder").text
     elif tags_conf.find("source_folder").text.startswith(" "): iss_handler("Config Error", "Path to source_folder must not begins with space", "conf_err04")
@@ -39,3 +41,13 @@ for tags_conf in root.findall("conf"):
     elif tags_conf.find("output_folder").text.startswith(" "): iss_handler("Config Error", "Path to source_folder must not begins with space", "conf_err06")
     elif path.exists(out_folder_path) == False: iss_handler("Config Error", "output_folder "+"'"+tags_conf.find("output_folder").text+"'" + " not found!", "conf_err07") 
     
+    for file_conf in tags_conf.findall("output_file"):
+        filename = file_conf.find("file_name").text+".h5"
+        dataset = file_conf.find("dataset_name").text
+        mode = file_conf.find("write_mode").text
+    
+            
+            
+            
+            
+            
