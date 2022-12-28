@@ -13,7 +13,6 @@ Util to marking key objects of the images and write it to the DHF5 as dataset in
 > `imp` - import error
 #### error severity
 > `err` - error
-### Codes List
 ### Error codes list
 #### Config Errors
 >imh_h or img_w is lower than zero: `conf_err01`
