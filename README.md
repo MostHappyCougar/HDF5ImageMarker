@@ -1,4 +1,5 @@
 ## Description
+# Decription
 Util to marking key objects of the images and write it to the DHF5 as dataset in real time
 ## Architecture:
 ![hl_architecture](https://user-images.githubusercontent.com/104580123/209446611-b075d657-fa96-4ac8-b23f-6c005d78dedf.jpg)
@@ -13,6 +14,7 @@ Util to marking key objects of the images and write it to the DHF5 as dataset in
 #### error severity
 > `err` - error
 ### Codes List
+### Error codes list
 #### Config Errors
 >imh_h or img_w is lower than zero: `conf_err01`
 
