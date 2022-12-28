@@ -1,3 +1,4 @@
+## Description
 # Decription
 Util to marking key objects of the images and write it to the DHF5 as dataset in real time
 ## Architecture:
@@ -12,6 +13,7 @@ Util to marking key objects of the images and write it to the DHF5 as dataset in
 > `imp` - import error
 #### error severity
 > `err` - error
+### Codes List
 ### Error codes list
 #### Config Errors
 >imh_h or img_w is lower than zero: `conf_err01`
@@ -29,5 +31,11 @@ Util to marking key objects of the images and write it to the DHF5 as dataset in
 >output_folder begins with space: `conf_err06`
 
 >output_folder doesn't exist: `conf_err07`
+
+>file_name is empty or starts with space: `conf_err11`
+
+>dataset_name is empty or starts with space: `conf_err12`
+
+>write_mode is empty or equals no 'a' or 'w': `conf_err13`
 #### Importing Errors
 >no subdirectory in source_folder of no content there: `imp_err01`
