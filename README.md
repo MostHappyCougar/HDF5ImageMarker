@@ -1,10 +1,10 @@
-# HDF5ImageMarker
+## Description
 Util to marking key objects of the images and write it to the DHF5 as dataset in real time
-### Architecture:
+## Architecture:
 ![hl_architecture](https://user-images.githubusercontent.com/104580123/209446611-b075d657-fa96-4ac8-b23f-6c005d78dedf.jpg)
 
-### Error codes:
-#### Code Convention
+## Error codes:
+### Code Convention
 > [error_type]_[error_severity][code]
 #### error_types
 > `conf` - config error
@@ -12,6 +12,7 @@ Util to marking key objects of the images and write it to the DHF5 as dataset in
 > `imp` - import error
 #### error severity
 > `err` - error
+### Codes List
 #### Config Errors
 >imh_h or img_w is lower than zero: `conf_err01`
 
