@@ -35,5 +35,7 @@ Util to marking key objects of the images and write it to the DHF5 as dataset in
 >dataset_name is empty or starts with space: `conf_err12`
 
 >write_mode is empty or equals no 'a' or 'w': `conf_err13`
+
+>source_folder tag is empty: `conf_err14`
 #### Importing Errors
 >no subdirectory in source_folder of no content there: `imp_err01`
