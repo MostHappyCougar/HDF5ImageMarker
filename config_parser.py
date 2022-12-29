@@ -34,7 +34,7 @@ for tags_conf in root.findall("conf"):
         src_folder_path = path.join(dirname, tags_conf.find("source_folder").text) #Source Folder abs path
         out_folder_path = path.join(dirname, tags_conf.find("output_folder").text) #Output Folder abs path
     except TypeError:
-        iss_handler("Config Error", "window_size_h must be greater than zero!", "conf_err14")
+        iss_handler("Config Error", "source_folder and output_file must not be empty!", "conf_err14")
     
     
     '''MARKS COUNTS'''
