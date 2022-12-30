@@ -1,7 +1,7 @@
 import h5py
 import numpy as np
 from os import path
-from config_parser import filename, mode, dataset, marks_counts
+from config_parser import filename, mode, dataset
 
 def expore_image(output_folder, image, coords):    
         
@@ -19,7 +19,6 @@ def expore_image(output_folder, image, coords):
             coords[coords.shape[0]-1:] = coords_arr
     else:
         with h5py.File(path.join(output_folder, filename), 'w') as hdf5_dataset:
-            print(coords_arr.shape)
             train_group = hdf5_dataset.create_group(dataset)
             train_group.create_dataset("Images", data=img_arr, chunks=True, maxshape=(None, img_arr.shape[1], img_arr.shape[2], img_arr.shape[3]))
             train_group.create_dataset("Marks", data=coords_arr, chunks=True, maxshape=(None, coords_arr.shape[1], coords_arr.shape[2]))

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <root>
 	<conf>
-		<img_w>2</img_w>
-		<img_h>2</img_h>
+		<img_w>64</img_w>
+		<img_h>32</img_h>
 		<window_size_w>16</window_size_w>
 		<window_size_h>8</window_size_h>
 		<source_folder>source</source_folder>
