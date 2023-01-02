@@ -16,6 +16,7 @@ def expore_image(output_folder, image, coords):
                 images.resize(images.shape[0] + 1, axis=0)
                 coords.resize(coords.shape[0] + 1, axis=0)
             except AttributeError:
+                train_group = hdf5_dataset.create_group(dataset)
                 train_group.create_dataset("Images", data=img_arr, chunks=True, maxshape=(None, img_arr.shape[1], img_arr.shape[2], img_arr.shape[3]))
                 train_group.create_dataset("Marks", data=coords_arr, chunks=True, maxshape=(None, coords_arr.shape[1], coords_arr.shape[2]))
                 
