@@ -15,8 +15,8 @@ def expore_image(output_folder, image, coords):
                 images, coords = train_group.get('Images'), train_group.get('Marks')
                 images.resize(images.shape[0] + 1, axis=0)
                 coords.resize(coords.shape[0] + 1, axis=0)
-                images[img_arr.shape[0]-1:] = image
-                coords[coords.shape[0]-1:] = coords_arr
+                images[-1] = image
+                coords[-1] = coords_arr
             else:
                 train_group = hdf5_dataset.create_group(dataset)
                 train_group.create_dataset("Images", data=img_arr, chunks=True, maxshape=(None, img_arr.shape[1], img_arr.shape[2], img_arr.shape[3]))
