@@ -35,10 +35,12 @@ def marking(data):
                 print("Must be marked up " + str(marks_counts - len(marks_coords)) + " marks")
     def on_z_press(event):
         if event.key == 'z':
-            del marks_coords[-1]
-            markers[-1].remove()
-            del markers[-1]
-            plt.draw()
+            if len(marks_coords) > 0 and len(markers) > 0:
+                del marks_coords[-1]
+                markers[-1].remove()
+                del markers[-1]
+                plt.draw()
+            else: print("No active marks remain")
         
     fig.canvas.mpl_connect('button_press_event', on_click_event)
     fig.canvas.mpl_connect('key_press_event', on_enter_press)
