@@ -10,7 +10,7 @@ With this util you can mark up any key points of the image and write down all pa
 
 Now you can use this util via running `torch_importer.py` as regular python script
 ## Detail configuring
-You can also configurate some parameters of marking via `config.xml`. Be aware changing any parameters when `torch_importer.py` is still running is not prodlike scenario. You may change any parameter in `config.xml` only before `torch_importer.py` is ranю
+You can also configurate some parameters of marking via `config.xml`. Be aware changing any parameters when `torch_importer.py` is still running is not prodlike scenario. You may change any parameter in `config.xml` only before `torch_importer.py` is ran.
 ### Parameters overview
 - `img_w` and `img_h` - the sizes that an each image will be resized to. `img_w` is image width, `img_h` is image height
 - `window_size_w` and `window_size_h` - It's aboout size of window an each image will be show upon
