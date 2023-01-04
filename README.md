@@ -9,6 +9,9 @@ With this util you can mark up any key points of the image and write down all pa
 5. Set the name of output folder into the `<output_folder>` tag of `config.xml` file
 
 Now you can use this util via running `torch_importer.py` as regular python script
+- To mark up the key point just click to an image in required position
+- To cancel last point - press `z`. You may cancel all points for current image
+- When all points hahe been marked up press `Enter` to save
 ## Detail configuring
 You can also configurate some parameters of marking via `config.xml`. Be aware changing any parameters when `torch_importer.py` is still running is not prodlike scenario. You may change any parameter in `config.xml` only before `torch_importer.py` is ran.
 ### Parameters overview
