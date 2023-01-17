@@ -1,29 +1,36 @@
 import h5py
 import numpy as np
-from os import path
-from config_parser import filename, mode, dataset
+from os import path, getcwd
 
-def expore_image(output_folder, image, coords):    
+class hdf5_exporter():
+    def __init__(self, out_folder, filename, dataset_name):
+        self.__out_folder = path.join(getcwd(), out_folder)
+        self.__filename = filename + ".h5"
+        self.__dataset_name = dataset_name
         
-    coords_arr, img_arr  = np.array(coords, ndmin=3), np.array(image, ndmin=4)
-
-    if path.exists(path.join(output_folder, filename)) == True:
-        with h5py.File(path.join(output_folder, filename), mode) as hdf5_dataset:
-            
-            if f'{dataset}' in hdf5_dataset:
-                train_group = hdf5_dataset.get(dataset)
-                images, coords = train_group.get('Images'), train_group.get('Marks')
-                images.resize(images.shape[0] + 1, axis=0)
-                coords.resize(coords.shape[0] + 1, axis=0)
-                images[-1] = image
-                coords[-1] = coords_arr
-            else:
-                train_group = hdf5_dataset.create_group(dataset)
-                train_group.create_dataset("Images", data=img_arr, chunks=True, maxshape=(None, img_arr.shape[1], img_arr.shape[2], img_arr.shape[3]))
-                train_group.create_dataset("Marks", data=coords_arr, chunks=True, maxshape=(None, coords_arr.shape[1], coords_arr.shape[2]))
-    else:
-        with h5py.File(path.join(output_folder, filename), 'w') as hdf5_dataset:
-            train_group = hdf5_dataset.create_group(dataset)
-            train_group.create_dataset("Images", data=img_arr, chunks=True, maxshape=(None, img_arr.shape[1], img_arr.shape[2], img_arr.shape[3]))
-            train_group.create_dataset("Marks", data=coords_arr, chunks=True, maxshape=(None, coords_arr.shape[1], coords_arr.shape[2]))
-    
+        self.__marks_array, self.__img_array = [], []
+        
+    def export_image(self, image, marks):
+        
+        self.__marks_array, self.__img_array = np.array(marks, ndmin=3), np.array(image, ndmin=4)
+        
+        if path.exists(path.join(self.__out_folder, self.__filename)):
+            with h5py.File(path.join(self.__out_folder, self.__filename), 'a') as hdf5_dataset:
+                if f'{self.__dataset_name}' in hdf5_dataset:
+                    train_group = hdf5_dataset.get(self.__dataset_name)
+                    images, coords = train_group.get('Images'), train_group.get('Marks')
+                    
+                    images.resize(images.shape[0] + 1, axis=0)
+                    coords.resize(coords.shape[0] + 1, axis=0)
+                    
+                    images[-1] = self.__img_array
+                    coords[-1] = self.__marks_array
+                else:
+                    train_group = hdf5_dataset.create_group(self.__dataset_name)
+                    train_group.create_dataset("Images", data=self.__img_array, chunks=True, maxshape=(None, self.__img_array.shape[1], self.__img_array.shape[2], self.__img_array.shape[3]))
+                    train_group.create_dataset("Marks", data=self.__marks_array, chunks=True, maxshape=(None, self.__marks_array.shape[1], self.__marks_array.shape[2]))
+        else:
+            with h5py.File(path.join(self.__out_folder, self.__filename), 'w') as hdf5_dataset:
+                train_group = hdf5_dataset.create_group(self.__dataset_name)
+                train_group.create_dataset("Images", data=self.__img_array, chunks=True, maxshape=(None, self.__img_array.shape[1], self.__img_array.shape[2], self.__img_array.shape[3]))
+                train_group.create_dataset("Marks", data=self.__marks_array, chunks=True, maxshape=(None, self.__marks_array.shape[1], self.__marks_array.shape[2]))

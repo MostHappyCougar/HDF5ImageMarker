@@ -1,82 +1,66 @@
 import xml.etree.ElementTree as ET
-from os import path
-from ErrorHandler import iss_handler
+from os import getcwd, path
+import error_handler
 
-dirname = path.dirname(__file__)
-conf_path = path.join(dirname, "config.xml")
-
-conf = ET.parse(conf_path)
-root = conf.getroot()
-
-for tags_conf in root.findall("conf"):
-    '''WIDTH OF IMAGES'''
-    try:
-        width = int(tags_conf.find("img_w").text) if int(tags_conf.find("img_w").text) > 0 else iss_handler("Config Error", "img_w must be greater than zero!", "conf_err01")
-    except ValueError:
-        iss_handler("Config Error", "img_w must be an integer!", "conf_err011")
-    except TypeError:
-        iss_handler("Config Error", "img_w must be filled!", "conf_err012")
+class xml_parser():
+    def __init__(self, path_to_config = None):
+        #When path_to_config is not filled the default path will be used
+        if path_to_config:
+            self.conf_path = path.join(getcwd(), path_to_config)
+        else:
+            self.conf_path = path.join(getcwd(), "config.xml")
+        #Dictionary of parsed parameters
+        self.__params = {}
     
     
-    '''HIGHT OF IMAGES'''
-    try:
-        height = int(tags_conf.find("img_h").text) if int(tags_conf.find("img_h").text) > 0 else iss_handler("Config Error", "img_h must be greater than zero!", "conf_err01")
-    except ValueError:
-        iss_handler("Config Error", "img_h must be an integer!", "conf_err011")
-    except TypeError:
-        iss_handler("Config Error", "img_h must be filled!", "conf_err012")
-    
-    
-    window_size_w = int(tags_conf.find("window_size_w").text) if int(tags_conf.find("window_size_w").text) > 0 else iss_handler("Config Error", "window_size_w must be greater than zero!", "conf_err02")
-    window_size_h = int(tags_conf.find("window_size_h").text) if int(tags_conf.find("window_size_h").text) > 0 else iss_handler("Config Error", "window_size_h must be greater than zero!", "conf_err02")
-    
-    try:
-        src_folder_path = path.join(dirname, tags_conf.find("source_folder").text) #Source Folder abs path
-        out_folder_path = path.join(dirname, tags_conf.find("output_folder").text) #Output Folder abs path
-    except TypeError:
-        iss_handler("Config Error", "source_folder and output_file must not be empty!", "conf_err14")
-    
-    
-    '''MARKS COUNTS'''
-    try:
-        marks_counts=int(tags_conf.find("marks_counts").text) if int(tags_conf.find("marks_counts").text) > 0 else iss_handler("Config Error", "marks_counts must be greater than zero!", "conf_err08")
-    except TypeError:
-        iss_handler("Config Error", "marks_counts must be filled!", "conf_err09")
-    except ValueError:
-        iss_handler("Config Error", "marks_counts must be an integer!", "conf_err10")
-    
-    
-    '''SOURCE FOLDER'''
-    if path.exists(src_folder_path) == True:
-        source_folder = tags_conf.find("source_folder").text
-    elif tags_conf.find("source_folder").text.startswith(" "): iss_handler("Config Error", "Path to source_folder must not begins with space", "conf_err04")
-    elif path.exists(src_folder_path) == False: iss_handler("Config Error", "source_folder "+"'"+tags_conf.find("source_folder").text+"'" + " not found!", "conf_err05") 
-    
-    
-    '''OUTPUT FOLDER'''
-    if path.exists(out_folder_path) == True:
-        output_folder = tags_conf.find("output_folder").text
-    elif tags_conf.find("output_folder").text.startswith(" "): iss_handler("Config Error", "Path to source_folder must not begins with space", "conf_err06")
-    elif path.exists(out_folder_path) == False: iss_handler("Config Error", "output_folder "+"'"+tags_conf.find("output_folder").text+"'" + " not found!", "conf_err07") 
-    
-    
-    '''OUTPUT FILE'''
-    for file_conf in tags_conf.findall("output_file"):
-        try:
-            filename = file_conf.find("file_name").text+".h5" if file_conf.find("file_name").text.startswith(" ") == False else iss_handler("Config Error", "file_name must starts with no space!", "conf_err11")
-        except AttributeError:
-            iss_handler("Config Error", "file_name must be not empty!", "conf_err11")
-        try:
-            dataset = file_conf.find("dataset_name").text if file_conf.find("dataset_name").text.startswith(" ") == False else iss_handler("Config Error", "dataset_name must starts with no space!", "conf_err12")
-        except AttributeError:
-            iss_handler("Config Error", "dataset_name must be not empty!", "conf_err12")
+    def get_conf_params(self):
+        self.__conf = ET.parse(self.conf_path)
+        self.__conf_root = self.__conf.getroot()
         
-        try:
-            mode = file_conf.find("write_mode").text if file_conf.find("write_mode").text in ('w', 'a') else iss_handler("Config Error", "mode must be 'w' of 'a'!", "conf_err13")
-        except AttributeError:
-            iss_handler("Config Error", "write_mode must be not empty!", "conf_err13")
+        for __tags in self.__conf_root.findall("conf"):
+            #Image width
+            if int(__tags.find("img_w").text) > 0:
+                self.__params["width"] = int(__tags.find("img_w").text)
+            else: 
+                raise error_handler.InvalidWidth(__tags.find("img_w").text)
             
+            #Image height
+            if int(__tags.find("img_h").text) > 0:
+                self.__params["height"] = int(__tags.find("img_h").text)
+            else:
+                raise error_handler.InvalidHeight(__tags.find("img_h").text)
             
+            #Marks counts
+            if int(__tags.find("marks_count").text) > 0:
+                self.__params["marks_count"] = int(__tags.find("marks_count").text)
+            else:
+                raise error_handler.InvalidMarksCount(__tags.find("img_h").text)
             
+            #Source folder
+            if __tags.find("source_folder").text and __tags.find("source_folder").text.startswith(" ") == False:
+                self.__params["source_folder"] = __tags.find("source_folder").text
+            else:
+                raise error_handler.InvalidSourceFolderName(__tags.find("source_folder").text)
             
+            #Output folder
+            if __tags.find("output_folder").text and __tags.find("output_folder").text.startswith(" ") == False:
+                self.__params["output_folder"] = __tags.find("output_folder").text
+            else:
+                raise error_handler.InvalidOutputFolderName(__tags.find("output_folder").text)
+                
+            #Parse output file parameters
+            for __output_file_info in __tags.findall("output_file"):
+                #Output filename
+                if __output_file_info.find("file_name").text and __output_file_info.find("file_name").text.startswith(' ') == False:
+                    self.__params["out_file_name"] = __output_file_info.find("file_name").text
+                else: 
+                    raise error_handler.InvalidOutputFileName(__output_file_info.find("file_name").text)
+                
+                #Output dataset name
+                if __output_file_info.find("dataset_name").text and __output_file_info.find("dataset_name").text.startswith(" ") == False:
+                    self.__params["out_dataset_name"] = __output_file_info.find("dataset_name").text
+                else:
+                    raise error_handler.InvalidDatasetName(__output_file_info.find("dataset_name").text)
+        
+        return self.__params
             

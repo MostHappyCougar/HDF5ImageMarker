@@ -1,8 +1,6 @@
 import h5py
-from config_parser import filename
 
-
-with h5py.File(filename, 'r') as hdf:
+with h5py.File('test_suite.h5', 'r') as hdf:
     print("Image Array Shapes: \n", hdf['/Test/Images'].shape)
     print("Coordinates Shapes: \n", hdf['/Test/Marks'].shape)
     
