@@ -1,10 +1,11 @@
 import h5py
 import numpy as np
-from os import path, getcwd
+from os import path
 
 class hdf5_exporter():
     def __init__(self, out_folder, filename, dataset_name):
-        self.__out_folder = path.join(getcwd(), out_folder)
+        self.__dirname = path.dirname(__file__)
+        self.__out_folder = path.join(self.__dirname, out_folder)
         self.__filename = filename + ".h5"
         self.__dataset_name = dataset_name
         

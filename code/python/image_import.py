@@ -1,12 +1,13 @@
 from torchvision import datasets, transforms
 from torch.utils.data import DataLoader
-from os import getcwd, path
+from os import path
 import error_handler
 
 class ImageImport():
     def __init__(self, source_folder, width, height):
+        self.__dirname = path.dirname(__file__)
         #path to source folder
-        self.__path_to_source = path.join(getcwd(), source_folder)
+        self.__path_to_source = path.join(self.__dirname, source_folder)
         #Image transforms
         self.__transforms = transforms.Compose([transforms.Resize((height, width)),transforms.CenterCrop((height, width)),transforms.ToTensor()])
         

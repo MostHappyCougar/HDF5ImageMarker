@@ -1,14 +1,15 @@
 import xml.etree.ElementTree as ET
-from os import getcwd, path
+from os import path
 import error_handler
 
 class xml_parser():
     def __init__(self, path_to_config = None):
+        self.__dirname = path.dirname(__file__)
         #When path_to_config is not filled the default path will be used
         if path_to_config:
-            self.conf_path = path.join(getcwd(), path_to_config)
+            self.conf_path = path.join(self.__dirname, path_to_config)
         else:
-            self.conf_path = path.join(getcwd(), "config.xml")
+            self.conf_path = path.join(self.__dirname, "config.xml")
         #Dictionary of parsed parameters
         self.__params = {}
     
