@@ -11,7 +11,8 @@ class DatasetValudation():
         
         if os.path.exists(self.__out_file):
             with h5py.File(self.__out_file, 'r') as out_file:
-                self.__dataset_shapes = [out_file[self.__params["out_dataset_name"]+"/Images"][0].shape, out_file[self.__params["out_dataset_name"]+"/Marks"][0].shape]
-                if self.__dataset_shapes != [(3, self.__params["height"], self.__params["width"]), (self.__params["marks_count"], 2)]:
-                    raise error_handler.InvalidConfiguration([(3, self.__params["height"], self.__params["width"]), (self.__params["marks_count"], 2)], self.__dataset_shapes)
+                if self.__params["out_dataset_name"] in out_file:
+                    self.__dataset_shapes = [out_file[self.__params["out_dataset_name"]+"/Images"][0].shape, out_file[self.__params["out_dataset_name"]+"/Marks"][0].shape]
+                    if self.__dataset_shapes != [(3, self.__params["height"], self.__params["width"]), (self.__params["marks_count"], 2)]:
+                        raise error_handler.InvalidConfiguration([(3, self.__params["height"], self.__params["width"]), (self.__params["marks_count"], 2)], self.__dataset_shapes)
             
