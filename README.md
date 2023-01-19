@@ -18,7 +18,7 @@ You can also configurate some parameters of marking via `config.xml`. Be aware c
 - `img_w` and `img_h` - the sizes that an each image will be resized to. `img_w` is image width, `img_h` is image height
 - `source_folder` - The folder that images for marking is store in
 - `output_folder` - the folder where the HDF5 file will be save
-- `marks_counts` - count of poits that will be marked up
+- `marks_count` - count of poits that will be marked up
 - `file_name` - name of HDF5 file. Should be specitied without file extention
 - `dataset_name` name of dataset inside the HDF5 file
 
