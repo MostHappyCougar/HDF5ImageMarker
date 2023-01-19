@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <root>
 	<conf>
-		<img_w>2</img_w>
-		<img_h>2</img_h>
+		<img_w>17</img_w>
+		<img_h>16</img_h>
 		<marks_count>1</marks_count>
 		<source_folder>source</source_folder>
 		<output_folder>output</output_folder>

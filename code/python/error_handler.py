@@ -47,5 +47,10 @@ class InvalidSourceStructure(Exception):
     def __str__(self):
         return self.message
 
+class InvalidConfiguration(Exception):
+    def __init__(self, actual, existing):
+        self.message = f"New configuration is different to an existing dataset\nActual: {actual}\nExisting: {existing}"
+    def __str__(self):
+        return self.message
 
             
