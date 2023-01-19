@@ -1,41 +1,28 @@
 # Decription
-Util to marking key objects of the images and write it to the DHF5 as dataset in real time
-## Architecture:
-![hl_architecture](https://user-images.githubusercontent.com/104580123/209446611-b075d657-fa96-4ac8-b23f-6c005d78dedf.jpg)
+With this util you can mark up any key points of the image and write down all pairs image-marks_list into the HDF5 file
+## How to use
+1. Create your input folder where the images for marking will be take from
+    - This folder should be created upon the directory the `torch_importer.py` is stored in
+2. Create subdirectory in this folder and put your image set into this subdirectory
+3. Set the name of input folder into the `<source_folder>` tag of `config.xml` file
+4. Create output folder upon directory the `torch_importer.py` is stored in
+5. Set the name of output folder into the `<output_folder>` tag of `config.xml` file
 
-## Error codes:
-### Code Convention
-> [error_type]_[error_severity][code]
-#### error_types
-> `conf` - config error
+Now you can use this util via running `torch_importer.py` as regular python script
+- To mark up the key point just click to an image in required position
+- To cancel last point - press `z`. You may cancel all points for current image
+- When all points have been marked up press `Enter` to save
+## Detail configuring
+You can also configurate some parameters of marking via `config.xml`. Be aware changing any parameters when `torch_importer.py` is still running is not prodlike scenario. You may change any parameter in `config.xml` only before `torch_importer.py` is ran.
+### Parameters overview
+- `img_w` and `img_h` - the sizes that an each image will be resized to. `img_w` is image width, `img_h` is image height
+- `window_size_w` and `window_size_h` - It's aboout size of window an each image will be show upon
+- `source_folder` - The folder that images for marking is store in
+- `output_folder` - the folder where the HDF5 file will be save
+- `marks_counts` - count of poits that will be marked up
+- `file_name` - name of HDF5 file. Should be specitied without file extention
+- `dataset_name` name of dataset inside the HDF5 file
 
-> `imp` - import error
-#### error severity
-> `err` - error
-### Error codes list
-#### Config Errors
->imh_h or img_w is lower than zero: `conf_err01`
+Parameters that have no mentioned have no impact at this moment
 
->imh_h or img_w is not integer: `conf_err011`
 
->imh_h or img_w is not filled: `conf_err012`
-
->window_size_h or window_size_w is lower than zero: `conf_err02`
-
->source_folder begins with space: `conf_err04`
-
->source_folder doesn't exist: `conf_err05`
-
->output_folder begins with space: `conf_err06`
-
->output_folder doesn't exist: `conf_err07`
-
->file_name is empty or starts with space: `conf_err11`
-
->dataset_name is empty or starts with space: `conf_err12`
-
->write_mode is empty or equals no 'a' or 'w': `conf_err13`
-
->source_folder tag is empty: `conf_err14`
-#### Importing Errors
->no subdirectory in source_folder of no content there: `imp_err01`
