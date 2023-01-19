@@ -16,7 +16,6 @@ Now you can use this util via running `img_marker.py` as regular python script
 You can also configurate some parameters of marking via `config.xml`. Be aware changing any parameters when `img_marker.py` is still running is not prodlike scenario. You may change any parameter in `config.xml` only before `img_marker.py` is ran.
 ### Parameters overview
 - `img_w` and `img_h` - the sizes that an each image will be resized to. `img_w` is image width, `img_h` is image height
-- `window_size_w` and `window_size_h` - It's aboout size of window an each image will be show upon
 - `source_folder` - The folder that images for marking is store in
 - `output_folder` - the folder where the HDF5 file will be save
 - `marks_counts` - count of poits that will be marked up
