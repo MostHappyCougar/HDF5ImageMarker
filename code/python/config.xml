@@ -1,22 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <root>
 	<conf>
-		<img_w>64</img_w>
-		<img_h>32</img_h>
-		<window_size_w>16</window_size_w>
-		<window_size_h>8</window_size_h>
+		<img_w>17</img_w>
+		<img_h>16</img_h>
+		<marks_count>1</marks_count>
 		<source_folder>source</source_folder>
 		<output_folder>output</output_folder>
-		<marks_counts>5</marks_counts>
+		
 		<output_file>
 			<file_name>test_suite</file_name>
 			<dataset_name>Test</dataset_name>
-			<write_mode>a</write_mode>
 		</output_file>
 	</conf>
-	
-	<logs>
-		<log_folder>logs</log_folder>
-		<import_logs>0</import_logs>
-	</logs>
 </root>
