@@ -15,7 +15,7 @@ Now you can use this util via running `img_marker.py` as regular python script
 - To cancel last point - press `z`. You may cancel all points for current image
 - When all points have been marked up press `Enter` to save
 ## Detail configuring
-You can also configurate some parameters of marking via `config.xml`. Be aware changing any parameters when `img_marker.py` is still running is not prodlike scenario. You may change any parameter in `config.xml` only before `img_marker.py` is ran.
+You can also configure some parameters of marking via `config.xml`. Be aware changing any parameters when `img_marker.py` is still running is not prodlike scenario. You may change any parameter in `config.xml` only before `img_marker.py` is ran.
 ### Parameters overview
 - `img_w` and `img_h` - the sizes that an each image will be resized to. `img_w` is image width, `img_h` is image height
 - `source_folder` - The folder that images for marking is store in
