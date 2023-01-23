@@ -1,5 +1,7 @@
 # Decription
-With this util you can mark up any key points of the image and write down all pairs image-marks_list into the HDF5 file
+This utility is applicable to marking up any points of an image according to neural network creators requirements irrespective to count of these points. 
+
+With this utility you may get coordinates of any image points that are keys accordingly to your purposes and write down these image and coordinates into the dataset at the all your points have been marked up
 ## How to use
 1. Create your input folder where the images for marking will be take from
     - This folder should be created upon the directory the `img_marker.py` is stored in
