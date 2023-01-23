@@ -6,6 +6,7 @@ With this utility you may get coordinates of any image points that are keys acco
 ```
 git clone https://github.com/MostHappyCougar/HDF5ImageMarker.git
 ```
+Or just download source code from last release
 ### Requirements
 | Package | Version |
 | ------------- | ------------- |
