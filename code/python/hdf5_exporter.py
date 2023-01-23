@@ -1,10 +1,9 @@
 import h5py
 import numpy as np
 from os import path
-import torch
 
 class hdf5_exporter():
-    def __init__(self, out_folder, filename, dataset_name):
+    def __init__(self, out_folder: str, filename: str, dataset_name: str):
         self.__dirname = path.dirname(__file__)
         self.__out_folder = path.join(self.__dirname, out_folder)
         self.__filename = filename + ".h5"
@@ -13,7 +12,7 @@ class hdf5_exporter():
         return
         
         
-    def export_image(self, image: torch.FloatTensor , marks: list[float]) -> None:
+    def export_image(self, image: "FloatTensor" , marks: list[float]) -> None:
         self.__marks_array, self.__img_array = np.array(marks, ndmin=3), np.array(image, ndmin=4)
         if path.exists(path.join(self.__out_folder, self.__filename)):
             with h5py.File(path.join(self.__out_folder, self.__filename), 'a') as hdf5_dataset:
