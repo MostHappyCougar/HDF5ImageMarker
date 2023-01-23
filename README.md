@@ -2,6 +2,19 @@
 This utility is applicable to marking up any points of an image according to neural network creators requirements irrespective to count of these points. 
 
 With this utility you may get coordinates of any image points that are keys accordingly to your purposes and write down these image and coordinates into the dataset at the all your points have been marked up
+## How to install
+```
+git clone https://github.com/MostHappyCougar/HDF5ImageMarker.git
+```
+### Requirements
+| Package | Version |
+| ------------- | ------------- |
+| torchvision  | 0.14.0+cu117  |
+| torch  | 1.13.0+cu117  |
+|	 h5py    |  3.7.0 |
+|  matplotlib |  3.5.3 |
+|  numpy | 1.23.1  |
+		
 ## How to use
 1. Create your input folder where the images for marking will be take from
     - This folder should be created upon the directory the `img_marker.py` is stored in
