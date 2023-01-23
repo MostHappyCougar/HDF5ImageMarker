@@ -3,7 +3,7 @@ from os import path
 import error_handler
 
 class xml_parser():
-    def __init__(self, path_to_config = None):
+    def __init__(self, path_to_config: str = None):
         self.__dirname = path.dirname(__file__)
         #When path_to_config is not filled the default path will be used
         if path_to_config:
@@ -12,9 +12,10 @@ class xml_parser():
             self.conf_path = path.join(self.__dirname, "config.xml")
         #Dictionary of parsed parameters
         self.__params = {}
+        return
     
     
-    def get_conf_params(self):
+    def get_conf_params(self) -> tuple:
         self.__conf = ET.parse(self.conf_path)
         self.__conf_root = self.__conf.getroot()
         

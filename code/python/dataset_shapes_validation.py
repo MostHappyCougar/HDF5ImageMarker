@@ -3,7 +3,7 @@ import h5py
 import os
 
 class DatasetValudation():
-    def __init__(self, dataset_params):
+    def __init__(self, dataset_params: dict):
         self.__params = dataset_params
         
         self.__dirname = os.path.dirname(__file__)
@@ -15,4 +15,5 @@ class DatasetValudation():
                     self.__dataset_shapes = [out_file[self.__params["out_dataset_name"]+"/Images"][0].shape, out_file[self.__params["out_dataset_name"]+"/Marks"][0].shape]
                     if self.__dataset_shapes != [(3, self.__params["height"], self.__params["width"]), (self.__params["marks_count"], 2)]:
                         raise error_handler.InvalidConfiguration([(3, self.__params["height"], self.__params["width"]), (self.__params["marks_count"], 2)], self.__dataset_shapes)
+        return
             
