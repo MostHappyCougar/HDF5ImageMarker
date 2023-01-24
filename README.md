@@ -8,6 +8,7 @@ git clone https://github.com/MostHappyCougar/HDF5ImageMarker.git
 ```
 Or just download source code from last release
 ### Requirements
+This utility made ant tested using following packages:
 | Package | Version |
 | ------------- | ------------- |
 | torchvision  | 0.14.0+cu117  |
